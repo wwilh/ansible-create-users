@@ -5,3 +5,4 @@
   become: yes
   roles:
   - create-users
+# Creates users according to vars/users.secret file
