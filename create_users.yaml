@@ -1,7 +1,0 @@
----
-- hosts: '{{inventory}}'
-  vars_files:
-    - vars/users.secret
-  become: yes
-  roles:
-  - create-users
