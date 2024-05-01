@@ -1,8 +1,7 @@
 ---
 - name: Create Users
-  hosts: '{{inventory}}'
+  hosts: "{{inventory}}"
   become: yes
-
   tasks:
     - name: create a new user and name it kube
       ansible.builtin.user:
