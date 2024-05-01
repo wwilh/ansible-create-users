@@ -9,8 +9,7 @@
       state: present 
       shell: /bin/bash      
       password: "{{ lookup( 'cypher' , 'secret=password/testusers') }}"
-      state: present
-
+  
     - name: allow the user to run sudo without requiring a password
       lineinfile:
         dest: /etc/sudoers
