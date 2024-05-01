@@ -1,15 +1,17 @@
 ---
-- hosts: '{{inventory}}'
+- name: Create Users
+  hosts: '{{inventory}}'
   become: yes
 
   tasks:
     - name: create a new user and name it kube
-      user: name=kube 
-      append: yes 
-      state: present 
-      shell: /bin/bash      
-      password: "{{ lookup( 'cypher' , 'secret=password/testusers') }}"
-  
+      ansible.builtin.user:
+        name: kube
+        append: yes
+        state: present
+        shell: /bin/bash
+        group: wwservers
+        password: "{{ lookup( 'cypher' , 'secret=password/testusers') }}"
     - name: allow the user to run sudo without requiring a password
       lineinfile:
         dest: /etc/sudoers
